@@ -1,23 +1,19 @@
-# Use Node.js 16 slim as the base image
-FROM node:16-slim
+FROM ubuntu:latest
 
-# Set the working directory in the container
-WORKDIR /Usr/src/app
+# Install Node.js and npm
+RUN apt-get update && \
+    apt-get install -y nodejs npm && \
+    ln -s /usr/bin/nodejs /usr/bin/node
 
-# Copy the package.json and package-lock.json to the current directory
-COPY package*.json ./
-
-# Install the Node.js dependencies
-Run npm install 
-
-# Copy the rest of the application code to the working directory
-COPY ..
-
-# Build the React app 
-RUN npm run build
-
-# Expose port 3000 to the ouside of the world
+# Expose port 3000
 EXPOSE 3000
 
-# start your Node.js server (assuming it serves as the React app)
-CMD ["npm", "start"]
+# Add your application files and set up your environment
+# COPY . /app
+# WORKDIR /app
+
+# Install dependencies
+# RUN npm install
+
+# Specify how to start your application
+# CMD ["npm", "start"]
