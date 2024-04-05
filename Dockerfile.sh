@@ -19,5 +19,5 @@ RUN npm run build
 # Expose port 3000 to the ouside of the world
 EXPOSE 3000
 
-# start your Node.js server (assuming it serves the React app)
+# start your Node.js server (assuming it serves as the React app)
 CMD ["npm", "start"]
